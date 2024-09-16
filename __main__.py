@@ -1,4 +1,4 @@
-import os
+import sys
 import logging
 from telegram import Update
 from telegram.ext import Application, MessageHandler, ContextTypes
@@ -12,7 +12,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Get the token from environment variable
-telegram_token = os.environ.get("BOT_TOKEN")
+telegram_token = sys.argv[1]
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     logger.info(f"{update.message.date}: {update.message.from_user.id} - {update.message.text}")
